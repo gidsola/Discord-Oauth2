@@ -1,0 +1,24 @@
+{
+  "name": "discord-oauth2-zero",
+  "version": "1.0.0",
+  "description": "Discord Oauth2 implement for Autocode with native webhook handling for a zero dependency solution.",
+  "main": "oauth2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gidsola/Discord-Oauth2.git"
+  },
+  "keywords": [
+    "discord",
+    "oauth2",
+    "autocode"
+  ],
+  "author": "goodsie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gidsola/Discord-Oauth2/issues"
+  },
+  "homepage": "https://github.com/gidsola/Discord-Oauth2#readme"
+}
