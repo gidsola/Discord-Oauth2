@@ -2,6 +2,9 @@
 **Discord Oauth2 implement for Autocode with native webhook handling providing a zero dependency solution.**  
 
 This package will gain more functions in time.  
+A tutorial is available here:  
+https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/  
+
 
 ### Functions:
 **https://discord.com/developers/docs/topics/oauth2**  
@@ -12,7 +15,7 @@ This package will gain more functions in time.
 | getCredentials()  | bearer_token | Get user credentials. |
 | getClientCredentials()  | scope | Get bot owner credentials. |
 | refreshToken()  | refresh_token | Refresh a Bearer Token. |
-| revokeToken(bearer_token)  | bearer_token | Revoke a Bearer Token. |  
+| revokeToken()  | bearer_token | Revoke a Bearer Token. |  
 
 
 **This package also requires a new environment variable to be added:*  
@@ -20,7 +23,7 @@ This package will gain more functions in time.
 
 **OAUTH2_REDIRECT** is the url endpoint for your Oauth2.  
 **It must match your redirect url as set in the discord development portal.*  
-  
+
 There will be a tutorial on this soon.  
 
 #### Basic Usage:   

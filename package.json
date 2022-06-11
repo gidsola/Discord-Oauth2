@@ -1,6 +1,6 @@
 {
   "name": "discord-oauth2-zero",
-  "version": "1.0.1b",
+  "version": "1.0.1c",
   "description": "Discord Oauth2 implement for Autocode with native webhook handling for a zero dependency solution.",
   "main": "oauth2.js",
   "scripts": {
