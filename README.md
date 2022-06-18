@@ -1,13 +1,10 @@
 # Discord Oauth2 Zero  
 **Discord Oauth2 implement for Autocode with native webhook handling providing a zero dependency solution.**  
 
-This package will gain more functions in time.  
-A tutorial is available here:  
-https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/  
+This package no longer reads directly from the environment. Please see the updated usage below.  
 
-
-### Functions:
-**https://discord.com/developers/docs/topics/oauth2**  
+#### Functions:
+https://discord.com/developers/docs/topics/oauth2  
 
 | name | param | description |
 |---|---|---|
@@ -18,26 +15,25 @@ https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-ho
 | revokeToken()  | bearer_token | Revoke a Bearer Token. |  
 
 
-**This package also requires a new environment variable to be added:*  
-```process.env.OAUTH2_REDIRECT```  
-
-**OAUTH2_REDIRECT** is the url endpoint for your Oauth2.  
-**It must match your redirect url as set in the discord development portal.*  
-
-There will be a tutorial on this soon.  
+**<u>OAUTH2_REDIRECT</u>:** is the url endpoint for your Oauth2.  
+**This is the same redirect url used for your oauth2 authorization link that was generated in the Discord developers portal.*  
 
 #### Basic Usage:   
-  ```js
+```js
 const oauth2 = require('discord-oauth2-zero');  
 
-let bearerToken = await oauth2.getToken(code);  
-let credentials = await oauth2.getCredentials(bearer_token);  
-let clientCredentials = await oauth2.getClientCredentials(scope);  
-let refreshToken = await oauth2.refreshToken(refresh_token);  
+let bearerToken = await oauth2.getToken(CLIENT_ID, CLIENT_SECRET, OAUTH2_REDIRECT, CODE);  
+let refreshToken = await oauth2.refreshToken(CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN);  
+let clientCredentials = await oauth2.getClientCredentials(CLIENT_ID, CLIENT_SECRET, SCOPE);  
+let credentials = await oauth2.getCredentials(BEARER_TOKEN);  
 
-**revokeToken() is still untested**  
-let revoked = await oauth2.revokeToken(bearer_token);
+revokeToken() is still untested  
+let revoked = await oauth2.revokeToken(CLIENT_ID, CLIENT_SECRET, BEARER_TOKEN);
 ```
+Eventually more functions will be added.  
+
+A tutorial is available: [Here](https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/) *this needs to be updated now.  
+My hiding place on [Discord](https://dsc.gg/house-of-ghastli)
 
 
 Created in:

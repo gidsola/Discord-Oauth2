@@ -23,7 +23,7 @@ module.exports = {
     }
   },
   //
-  getClientCredentials: async (scope) => {
+  getClientCredentials: async (client_id, client_secret, scope) => {
     try {
       if (
         (res = await get({
@@ -32,7 +32,7 @@ module.exports = {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: `grant_type=client_credentials&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&scope=${scope}`,
+          body: `grant_type=client_credentials&client_id=${client_id}&client_secret=${client_secret}&scope=${scope}`,
         }))
       ) {
         return JSON.parse(res.body);
@@ -42,9 +42,9 @@ module.exports = {
     }
   },
   //
-  getToken: async (code) => {
+  getToken: async (client_id, client_secret, oauth2_redirect, code) => {
     try {
-      redirect = encodeURIComponent(process.env.OAUTH2_REDIRECT);
+      redirect = encodeURIComponent(oauth2_redirect);
       if (
         (oauth_ = await post({
           url: encodeURI(`discord.com`),
@@ -53,7 +53,7 @@ module.exports = {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: `grant_type=authorization_code&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&redirect_uri=${redirect}&code=${code}`,
+          body: `grant_type=authorization_code&client_id=${client_id}&client_secret=${client_secret}&redirect_uri=${redirect}&code=${code}`,
         }))
       ) {
         return JSON.parse(oauth_.body);
@@ -64,7 +64,7 @@ module.exports = {
   }, //eo getToken
   //
   //refreshToken
-  refreshToken: async (refresh_token) => {
+  refreshToken: async (client_id, client_secret, refresh_token) => {
     try {
       if (
         (oauth_ = await post({
@@ -74,7 +74,7 @@ module.exports = {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: `grant_type=refresh_token&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&refresh_token=${refresh_token}`,
+          body: `grant_type=refresh_token&client_id=${client_id}&client_secret=${client_secret}&refresh_token=${refresh_token}`,
         }))
       ) {
         return JSON.parse(oauth_.body);
@@ -85,7 +85,7 @@ module.exports = {
   }, //eo refreshToken
   //
   //revokeToken
-  revokeToken: async (token) => {
+  revokeToken: async (client_id, client_secret, token) => {
     try {
       if (
         (oauth_ = await post({
@@ -95,7 +95,7 @@ module.exports = {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: `client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&token=${token}`,
+          body: `client_id=${client_id}&client_secret=${client_secret}&token=${token}`,
         }))
       ) {
         return JSON.parse(oauth_.body);
