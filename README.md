@@ -1,10 +1,10 @@
 # Discord Oauth2 Zero  
+
 **Discord Oauth2 implement for Autocode with native webhook handling providing a zero dependency solution.**  
 
-This package no longer reads directly from the environment. Please see the updated usage below.  
+#### Functions  
 
-#### Functions:
-https://discord.com/developers/docs/topics/oauth2  
+<https://discord.com/developers/docs/topics/oauth2>  
 
 | name | param | description |
 |---|---|---|
@@ -14,11 +14,11 @@ https://discord.com/developers/docs/topics/oauth2
 | refreshToken()  | refresh_token | Refresh a Bearer Token. |
 | revokeToken()  | bearer_token | Revoke a Bearer Token. |  
 
-
 **<u>OAUTH2_REDIRECT</u>:** is the url endpoint for your Oauth2.  
 **This is the same redirect url used for your oauth2 authorization link that was generated in the Discord developers portal.*  
 
-#### Basic Usage:   
+#### Basic Usage
+
 ```js
 const oauth2 = require('discord-oauth2-zero');  
 
@@ -30,11 +30,11 @@ let credentials = await oauth2.getCredentials(BEARER_TOKEN);
 revokeToken() is still untested  
 let revoked = await oauth2.revokeToken(CLIENT_ID, CLIENT_SECRET, BEARER_TOKEN);
 ```
+
 Eventually more functions will be added.  
 
-A tutorial is available: [Here](https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/) *this needs to be updated now.  
+A tutorial is available: [Here](https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/).  
 My hiding place on [Discord](https://dsc.gg/house-of-ghastli)
-
 
 Created in:
 [![Created in Autocode. (https://Autocode.com)](https://content.public.files.stdlib.com/shared/static/branding/autocode-logo.svg "Autocode")](https://Autocode.com) Autocode.

@@ -1,10 +1,25 @@
-//***************************************/
-//      Discord Oauth2 implement for Autocode
-//  https://discord.com/developers/docs/topics/oauth2#oauth2
-//***************************************/
+/**
+ * Discord Oauth2 implement. Created for the Autocode community
+ * 
+ * Discord API Resource: https://discord.com/developers/docs/topics/oauth2#oauth2 
+ * 
+ * RFC 6749: https://www.rfc-editor.org/rfc/rfc6749
+ */
 module.exports = {
-  //
-  getCredentials: async (token) => {
+  /**
+   * Returns the user object of the requested account.
+   * 
+   * example:
+   * ```js
+   *   const oauth2 = require('discord-oauth2-zero');
+   *   let credentials = await getCredentials(token);
+   * ```
+   * @param {object} token Bearer token object of client to retrieve credentials for.
+   * @returns {Promise<object>} {...}
+   * 
+   * https://discord.com/developers/docs/resources/user#get-current-user
+   */
+  async getCredentials(token) {
     try {
       if (
         (res = await get({
@@ -22,8 +37,29 @@ module.exports = {
       console.log(e);
     }
   },
-  //
-  getClientCredentials: async (client_id, client_secret, scope) => {
+  /**
+   * Returns an bearer token object for the bot owner. Usually used for development and testing.
+   * 
+   * example:
+   * ```js
+   *   const oauth2 = require('discord-oauth2-zero');
+   *   let clientCredentials = await getClientCredentials(client_id, client_secret, scope);
+   * ```
+   * 
+   * @param {snowflake} client_id client id from developers portal.
+   * @param {string} client_secret client secret from developers portal.
+   * @param {string} scope scope of permissions to request.
+   * @returns {Promise<object>}
+   * {
+   *   "access_token": string,
+   *   "token_type": "Bearer",
+   *   "expires_in": integer(ms),
+   *   "scope": string
+   * }
+   * 
+   * https://discord.com/developers/docs/topics/oauth2#client-credentials-grant
+   */
+  async getClientCredentials(client_id, client_secret, scope) {
     try {
       if (
         (res = await get({
@@ -41,8 +77,31 @@ module.exports = {
       console.log(e);
     }
   },
-  //
-  getToken: async (client_id, client_secret, oauth2_redirect, code) => {
+  /**
+   * Returns a bearer token object for the authorizing client.
+   * 
+   * example:
+   * ```js
+   *   const oauth2 = require('discord-oauth2-zero');
+   *   let bearerToken = await oauth2.getToken(client_id, client_secret, oauth2_redirect, code);
+   * ```
+   * 
+   * @param {snowflake} client_id client id from developers portal.
+   * @param {string} client_secret client secret from developers portal.
+   * @param {string} oauth2_redirect URI encoded url for redirection.
+   * @param {string} code string passed to endpoint during authorization attempts.
+   * @returns {Promise<object>}
+   * {
+   *   "access_token": string,
+   *   "token_type": "Bearer",
+   *   "expires_in": integer(ms),
+   *   "refresh_token": string,
+   *   "scope": string
+   * }
+   * 
+   * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant
+   */
+  async getToken(client_id, client_secret, oauth2_redirect, code) {
     try {
       redirect = encodeURIComponent(oauth2_redirect);
       if (
@@ -62,9 +121,31 @@ module.exports = {
       console.log(e);
     }
   }, //eo getToken
-  //
-  //refreshToken
-  refreshToken: async (client_id, client_secret, refresh_token) => {
+
+  /**
+  * Returns a fresh bearer token object for a previously authorized client.
+  * 
+  * example:
+  * ```js
+  *   const oauth2 = require('discord-oauth2-zero');
+  *   let refreshToken = await oauth2.refreshToken(client_id, client_secret, refresh_token);
+  * ```
+  * 
+  * @param {snowflake} client_id client id from developers portal.
+  * @param {string} client_secret client secret from developers portal.
+  * @param {string} refresh_token URI encoded url for redirection.
+  * @returns {Promise<object>}
+  * {
+  *   "access_token": string,
+  *   "token_type": "Bearer",
+  *   "expires_in": integer(ms),
+  *   "refresh_token": string,
+  *   "scope": string
+  * }
+  * 
+  * https://discord.com/developers/docs/topics/oauth2#authorization-code-grant-refresh-token-exchange-example
+  */
+  async refreshToken(client_id, client_secret, refresh_token) {
     try {
       if (
         (oauth_ = await post({
@@ -83,9 +164,25 @@ module.exports = {
       console.log(e);
     }
   }, //eo refreshToken
-  //
-  //revokeToken
-  revokeToken: async (client_id, client_secret, token) => {
+
+  /**
+   * Allows clients to unsubscribe from an authorized service. 
+   * 
+   * * **(this method is currently untested)** *
+   * 
+   * example:
+   * ```js
+   *   const oauth2 = require('discord-oauth2-zero');
+   *   let revoked = await oauth2.revokeToken(client_id, client_secret, token);
+   * ```
+   * 
+   * @param {snowflake} client_id client id from developers portal.
+   * @param {string} client_secret client secret from developers portal.
+   * @param {string} token client access token.
+   * 
+   * As per RFC 7009: https://www.rfc-editor.org/rfc/rfc7009
+  */
+  async revokeToken(client_id, client_secret, token) {
     try {
       if (
         (oauth_ = await post({
