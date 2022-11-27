@@ -1,6 +1,6 @@
 # Discord Oauth2 Zero  
 
-**Discord Oauth2 implement for Autocode with native webhook handling providing a zero dependency solution.**  
+**Discord Oauth2 implement with native webhook handling providing a zero dependency solution.**  
 
 #### Functions  
 
