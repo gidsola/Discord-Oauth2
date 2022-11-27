@@ -36,5 +36,3 @@ Eventually more functions will be added.
 A tutorial is available: [Here](https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/).  
 My hiding place on [Discord](https://dsc.gg/house-of-ghastli)
 
-Created in:
-[![Created in Autocode. (https://Autocode.com)](https://content.public.files.stdlib.com/shared/static/branding/autocode-logo.svg "Autocode")](https://Autocode.com) Autocode.
