@@ -1,8 +1,9 @@
 {
   "name": "discord-oauth2-zero",
-  "version": "2.0.0",
-  "description": "Discord Oauth2 implement for Autocode with native webhook handling for a zero dependency solution.",
+  "version": "2.4.0",
+  "description": "Discord Oauth2",
   "main": "oauth2.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,8 +13,7 @@
   },
   "keywords": [
     "discord",
-    "oauth2",
-    "autocode"
+    "oauth2"
   ],
   "author": "goodsie",
   "license": "MIT",

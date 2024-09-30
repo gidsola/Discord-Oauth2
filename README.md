@@ -1,6 +1,6 @@
 # Discord Oauth2 Zero  
 
-**Discord Oauth2 implement with native webhook handling providing a zero dependency solution.**  
+**Discord Oauth2 implement**  
 
 #### Functions  
 
@@ -32,7 +32,4 @@ let revoked = await oauth2.revokeToken(CLIENT_ID, CLIENT_SECRET, BEARER_TOKEN);
 ```
 
 Eventually more functions will be added.  
-
-A tutorial is available: [Here](https://autocode.com/Good-sie/threads/oauth2-flow-for-autocode-tutorial-oauth-house-ghastli-72f7eae9/).  
-My hiding place on [Discord](https://dsc.gg/house-of-ghastli)
 
