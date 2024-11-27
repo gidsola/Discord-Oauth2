@@ -32,4 +32,5 @@ let revoked = await oauth2.revokeToken(CLIENT_ID, CLIENT_SECRET, BEARER_TOKEN);
 ```
 
 Eventually more functions will be added.  
+SOON
 
